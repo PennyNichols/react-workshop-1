@@ -2,15 +2,15 @@ import { useEffect, useState } from "react";
 import { Card, CardBody, CardImg, Spinner } from "reactstrap";
 
 const Gallery = () => {
-    const [photos, setPhotos] = useState([]);
+    const [albums, setAlbums] = useState([]);
     useEffect(() => {
         fetch(`https://cwbarry.pythonanywhere.com/image/`)
             .then(data => data.json())
-            .then(data => setPhotos(data));
+            .then(data => setAlbums(data));
     }, []);
-    const { images } = photos;
+    const { images } = albums;
     return (
-        <div className="d-flex flex-wrap justify-content-center">
+        <div className="d-flex flex-wrap justify-content-center card-wrapper">
             {images ? (
                 images.map(({ photographer, src }, i) => {
                     return (
@@ -22,7 +22,7 @@ const Gallery = () => {
                     );
                 })
             ) : (
-                <Spinner></Spinner>
+                <Spinner color="light" type="grow"/>
             )}
         </div>
     );

@@ -1,11 +1,16 @@
 import React from 'react';
 
-const Header = (props) => {
-  return (
-    <div style={{backgroundColor:props.bg}}>
-        <h1>{props.title}</h1>
-    </div>
-  )
+class Header extends React.Component{
+  render(){
+    return(
+      <>
+        <div className="top-block">
+          <div className="banner-text">
+            {this.props.children}GALLERY
+          </div>
+        </div>
+      </>
+    )
+  }
 }
-
-export default Header
+export default Header;

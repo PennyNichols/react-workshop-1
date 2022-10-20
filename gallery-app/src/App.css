@@ -7,6 +7,10 @@
   flex-wrap: wrap;
 }
 
+.card-wrapper{
+  margin-top: 180px !important;
+}
+
 .card{
   margin: 30px;
   overflow: hidden;
@@ -23,37 +27,51 @@ img:hover{
   transition: all .5s;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.top-block{
+  background-color: rgba(51, 51, 51, 0.44);
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  height: 300px;
+  animation: top-block-expand 3s ease-in-out 1 forwards;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@keyframes top-block-expand{
+  from{
+    height: 0;
+  }
+  to{
+    height: 180px;
   }
 }
+body{
+  background-color: rgb(79, 42, 111);
+}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.banner-text{
   color: white;
+  font-size: 100px;
+  position: absolute;
+  top: 0;
+  left: 450px;
+  height: 100px;
+  z-index: 1;
+  width: 100%;
+  text-shadow: -5px 9px 10px rgba(244,244,244,0.69);
+  white-space: nowrap;
+  animation: banner-animation 8s ease-in-out 50 alternate;
 }
+@keyframes banner-animation{
+  0%{
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
   }
-  to {
-    transform: rotate(360deg);
+
+  50%{
+    font-size: 150px;
+  }
+
+  100%{
+    left: -450px;
   }
 }

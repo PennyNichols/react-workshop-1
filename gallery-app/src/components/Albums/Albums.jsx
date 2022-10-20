@@ -1,22 +1,31 @@
-import React from 'react';
-import data from '../../helpers/data';
-import {Card} from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { Card, CardBody, CardImg, Spinner } from "reactstrap";
 
-const Albums = () => {
-    const renderAlbums = (props, index) =>{
-        return(
-            <Card style={{width:'18rem'}} key={index}>
-                <Card.Img variant='top' src={props.src.large}/>
-                <Card.Body>
-                    <Card.Title>{props.photographer}</Card.Title>
-                </Card.Body>
-            </Card>
-        );
-    };
+const Gallery = () => {
+    const [photos, setPhotos] = useState([]);
+    useEffect(() => {
+        fetch(`https://cwbarry.pythonanywhere.com/image/`)
+            .then(data => data.json())
+            .then(data => setPhotos(data));
+    }, []);
+    const { images } = photos;
+    return (
+        <div className="d-flex flex-wrap justify-content-center">
+            {images ? (
+                images.map(({ photographer, src }, i) => {
+                    return (
+                        <Card className="shadow border-0" key={i}>
+                            <CardImg className="img" src={src.large} alt={photographer} />
+                            <CardBody className="name">{photographer}</CardBody>
+                            
+                        </Card>
+                    );
+                })
+            ) : (
+                <Spinner></Spinner>
+            )}
+        </div>
+    );
+};
 
-  return (
-    <div className='flex'>{data.map(renderAlbums)}</div>
-  )
-}
-
-export default Albums
+export default Gallery;

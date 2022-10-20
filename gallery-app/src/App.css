@@ -12,14 +12,14 @@
   overflow: hidden;
 }
 
-img{
-  width: 10rem;
-  height: 10rem;
+.img{
+  width: 18rem;
+  height: 18rem;
   object-fit: cover;
 }
 
 img:hover{
-  transform: scale(1.1);
+  transform: scale(1.5);
   transition: all .5s;
 }
 
